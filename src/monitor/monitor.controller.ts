@@ -7,25 +7,25 @@ export class MonitorController {
     constructor(private monitor: MonitorService, private serverGateway: MonitorGateway) { }
 
     @Get()
-    index():string {
+    index(): string {
         return this.monitor.response();
     }
 
     @Get('personal/:uid')
     mipersonal(@Param() param): string {
-        this.serverGateway.server.emit('iopersonal', {uid :param.uid});
+        this.serverGateway.server.emit('iopersonal', { uid: param.uid });
         return this.monitor.response();
     }
 
     @Get('contratistas/:uid')
-    miscontratistas(@Param() param) :string{
-        this.serverGateway.server.emit('iocontratistas', { uid : param.uid });
+    miscontratistas(@Param() param): string {
+        this.serverGateway.server.emit('iocontratistas', { uid: param.uid });
         return this.monitor.response();
     }
 
     @Get('visitantes/:uid')
-    misvisitantes(@Param() param) :string{
-        this.serverGateway.server.emit('iovisitantes', { uid : param.uid });
+    misvisitantes(@Param() param): string {
+        this.serverGateway.server.emit('iovisitantes', { uid: param.uid });
         return this.monitor.response();
     }
 }
