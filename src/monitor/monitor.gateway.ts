@@ -3,20 +3,10 @@ import { Logger } from '@nestjs/common';
 import { Socket, Server } from 'socket.io';
 
 @WebSocketGateway()
-export class PersonalGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-
-	@WebSocketServer() server: Server;
-	private logger: Logger = new Logger('AppGateway');
-
-	@SubscribeMessage('message')
-	handleMessage(client: any, payload: any): string {
-		return 'Hello world!';
-	}
-
-	@SubscribeMessage('events')
-	handleEvent(@MessageBody() data: string): string {
-		return data;
-	}
+export class MonitorGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+	
+	private logger: Logger = new Logger('MonitorGateway');
+	@WebSocketServer() server :Server;
 
 	afterInit(server: Server) {
 		this.logger.log('Init');
