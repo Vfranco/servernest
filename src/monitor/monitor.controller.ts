@@ -16,4 +16,16 @@ export class MonitorController {
         this.serverGateway.server.emit('iopersonal', {uid :param.uid});
         return this.monitor.response();
     }
+
+    @Get('contratistas/:uid')
+    miscontratistas(@Param() param) :string{
+        this.serverGateway.server.emit('iocontratistas', { uid : param.uid });
+        return this.monitor.response();
+    }
+
+    @Get('visitantes/:uid')
+    misvisitantes(@Param() param) :string{
+        this.serverGateway.server.emit('iovisitantes', { uid : param.uid });
+        return this.monitor.response();
+    }
 }
